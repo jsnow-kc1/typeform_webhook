@@ -1,4 +1,4 @@
-import { IFormQuestionMaping, IRelationProperty, ICertanityForChoice, IDesiredRoofingSurface, IFuturePlanWithHome, IInterestInEnrgyEfficient, IFundingChoices } from "./_types"
+import { IFormQuestionMaping, IRelationProperty, ICertanityForChoice, IDesiredRoofingSurface, IFuturePlanWithHome, IInterestInEnrgyEfficient, IFundingChoices, ILastJobChoice, IColorScheme } from "./_types"
 import { IDesireTimeFrame } from "./_types"
 
 // ===== Customer Questionnaire for Roofing Services =====
@@ -98,62 +98,81 @@ export const quastionaryForRoofing_bUXAVAKr = () => {
 
 export const quastionaryForPaintingService_UsSzHcnl = () => {
     const question_maping: IFormQuestionMaping = {
-        "7e3a3368-e59a-4ea5-96d7-0a9c24e379bb": {
+        "tePRz87i1w2d": {
             question: "Do you have a timeframe for these projects?",
-            hubsport_property_name: "",
+            hubsport_property_name: "desired_timeframe",
             replace: {
-                'I have a hard due date.': { hubspot_valie_replace: "I have a hard due date" },
-                'I have a goal but am flexible.': { hubspot_valie_replace: "I have a goal but am flexible" },
-                'I do not have a time frame yet.': { hubspot_valie_replace: "I do not have a time frame yet" },
-                'I am not in a rush.': { hubspot_valie_replace: "I am not in a rush" },
+                'I have a hard due date.': { hubspot_valie_replace: IDesireTimeFrame.hard_due_date },
+                'I have a goal but am flexible.': { hubspot_valie_replace: IDesireTimeFrame.goal_but_flexible },
+                'I do not have a time frame yet.': { hubspot_valie_replace: IDesireTimeFrame.not_have_timeframe_yet },
+                'I am not in a rush.': { hubspot_valie_replace: IDesireTimeFrame.not_in_rush },
             }
         },
-        "1fabfaf0-3655-4856-bffa-cd96c5fd7443": {
+        "B6lSl96I1dE5": {
             question: "What is the date?",
-            hubsport_property_name: ""
+            hubsport_property_name: "desired_timeline_date"
         },
-        "66cc7ab4-6258-4bdd-9117-6307c619529b": {
+        "NZCGd4aEzqfh": {
             question: "What are your plans for the home?",
-            hubsport_property_name: "",
+            hubsport_property_name: "future_plans_with_home",
             replace: {
-                'I plan to sell soon': {},
-                'This is my forever home.': {},
-                'I plan to pass this home on to family': {},
-                'I am not sure': {}
+                'I plan to sell soon': {hubspot_valie_replace:IFuturePlanWithHome.plan_to_sell_soon},
+                'This is my forever home.': {hubspot_valie_replace:IFuturePlanWithHome["forever+home"]},
+                'I plan to pass this home on to family': {hubspot_valie_replace:IFuturePlanWithHome.plan_to_pass_this_home_on_to_family},
+                'I am not sure': {hubspot_valie_replace:IFuturePlanWithHome.not_sure}
             }
         },
-        "c2101365-cf6b-42ea-8265-2d0267f7c3db": {
+        "3wdppI4tm2Kg": {
             question: "Are you interested in energy-efficient upgrades?",
-            hubsport_property_name: ""
-        },
-        "06d0fd32-6286-4b56-8ff4-7cc97b390b97": {
-            question: "How will you fund this project?",
-            hubsport_property_name: "",
-            replace: {
-                'Cash': {},
-                'I have financing arranged': {},
-                "I'd like to get help getting financing": {},
-                "Other": {}
+            hubsport_property_name: "interest_in_energy_efficient_upgrades",
+            replace:{
+                "Yes":{hubspot_valie_replace:IInterestInEnrgyEfficient.yes},
+                "No":{hubspot_valie_replace:IInterestInEnrgyEfficient.no},
+                "Possibly Interested":{hubspot_valie_replace:IInterestInEnrgyEfficient.possibly_interested}
             }
         },
-        "01444d22-cbd8-43a1-9c0f-9f2c9f3f4574": {
+        "TZnVJvTgSLvv": {
+            question: "How will you fund this project?",
+            hubsport_property_name: "desired_funding___financing__cloned_",
+            replace: {
+                'Cash': {hubspot_valie_replace:IFundingChoices.cash},
+                'I have financing arranged': {hubspot_valie_replace:IFundingChoices.financed_arranged},
+                "I'd like to get help getting financing": {hubspot_valie_replace:IFundingChoices.help_getting_finance},
+                "Other": {hubspot_valie_replace:IFundingChoices.Other}
+            }
+        },
+        "DoJO4kpkIsh5": {
             question: "When was the last paint job on your home?",
-            hubsport_property_name: ""
+            hubsport_property_name: "last_time_home_was_painted",
+            replace:{
+                "Less than 5 Years":{hubspot_valie_replace:ILastJobChoice.less_then_5_years},
+                "5-10 Years":{hubspot_valie_replace:ILastJobChoice["5_to_10_years"]},
+                "10+ years":{hubspot_valie_replace:ILastJobChoice["10_plus_years"]},
+                "I do not remember / am unsure":{hubspot_valie_replace:ILastJobChoice.i_do_not_remember}
+            }
         },
-        "2d4af7c5-f38b-45cb-92be-e1c969cc2751": {
+        "WPr8QZFEnWnV": {
             question: "What color scheme would you like?",
-            hubsport_property_name: ""
+            hubsport_property_name: "desired_color_scheme",
+            replace:{
+                'The Same Color Scheme':{hubspot_valie_replace:IColorScheme.same_color_scheme}, 
+                'Complete Different Scheme':{hubspot_valie_replace:IColorScheme.complete_difference_scheme},
+                'Similar Scheme':{hubspot_valie_replace:IColorScheme.similar_scheme},
+                'Not Sure Yet':{hubspot_valie_replace:IColorScheme.not_sure_yet}
+            }
         },
-        "55963d1a-49d3-412d-ab63-9f2234151672": {
+        "UlxjmlMfmBXj": {
             question: "Any last comments or requests that you'd like to share?",
-            hubsport_property_name: ""
+            hubsport_property_name: "additional_comments_on_form"
         },
-        "6fcb7406-9842-4f09-a9e9-52202813f0f6": {
+        "QSAxB3ypHjRx": {
             question: "What are these requests?",
-            hubsport_property_name: ""
+            hubsport_property_name: "form_comments___request"
         }
-
-
     }
     return question_maping
+}
+
+export const quastionarySolarServiceForm_Mch6ZqYb = ()=>{
+    
 }

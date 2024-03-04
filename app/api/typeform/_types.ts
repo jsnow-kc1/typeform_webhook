@@ -82,7 +82,24 @@ export enum IInterestInEnrgyEfficient {
 export enum IFundingChoices {
     "cash"="Cash",
     "financed_arranged"="I have financing arranged",
-    "help_getting_finance"="I'd like to get help getting financing"
+    "help_getting_finance"="I'd like to get help getting financing",
+    "Other"="Other" // need to confirm hubspot value
+}
+
+
+export enum ILastJobChoice {
+    "less_then_5_years"='Less than 5 Years',
+    "5_to_10_years"="5-10 Years",
+    "10_plus_years"="10+ years",
+    "i_do_not_remember"="I do not remember / am unsure"
+}
+
+
+export enum IColorScheme {
+    "same_color_scheme"="The Same Color Scheme",
+    "complete_difference_scheme"="Complete Different Scheme",
+    "similar_scheme"="Similar Scheme",
+    "not_sure_yet"="Not Sure Yet"
 }
 
 

@@ -1,5 +1,5 @@
 import {IFormQuestionMaping, ITypeFormType,IFormQuestionMapingReplace} from './_types'
-import {quastionaryForRoofing_bUXAVAKr} from './_form_maping_data'
+import {quastionaryForPaintingService_UsSzHcnl, quastionaryForRoofing_bUXAVAKr} from './_form_maping_data'
 
 
 
@@ -13,6 +13,8 @@ export const formPropertMaping=({form_id,data}:{form_id:string,data:ITypeFormTyp
     let question_maping:IFormQuestionMaping | null = null
     if(form_id==="bUXAVAKr"){
         question_maping = quastionaryForRoofing_bUXAVAKr()
+    }else if(form_id==="UsSzHcnl"){
+        question_maping = quastionaryForPaintingService_UsSzHcnl()
     }
     if(!question_maping) return null
 
