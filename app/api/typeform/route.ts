@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
             requestData.form_response.hidden.deal_id,
             {properties:property_to_update}
         )
-        return NextResponse.json({success:true})
+        return NextResponse.json({success:true,data_updated:property_to_update})
     } catch (error) {
         return new Response("Something went wrong.", { status: 400 })
     }

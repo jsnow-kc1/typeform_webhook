@@ -1,5 +1,5 @@
 import {IFormQuestionMaping, ITypeFormType,IFormQuestionMapingReplace} from './_types'
-import {quastionaryForPaintingService_UsSzHcnl, quastionaryForRoofing_bUXAVAKr} from './_form_maping_data'
+import {quastionaryForPaintingService_UsSzHcnl, quastionaryForRoofing_bUXAVAKr, quastionaryPaintingAndRoofForm_ThDlcaCK, quastionarySolarPaintRoofingServiceForm_ScoUD2eg, quastionarySolarRoofingServiceForm_zT4ZOhYg, quastionarySolarServiceForm_MKTrhFzL, quastionarySolarServiceForm_Mch6ZqYb} from './_form_maping_data'
 
 
 
@@ -15,6 +15,17 @@ export const formPropertMaping=({form_id,data}:{form_id:string,data:ITypeFormTyp
         question_maping = quastionaryForRoofing_bUXAVAKr()
     }else if(form_id==="UsSzHcnl"){
         question_maping = quastionaryForPaintingService_UsSzHcnl()
+    }else if(form_id==="Mch6ZqYb"){
+        question_maping =  quastionarySolarServiceForm_Mch6ZqYb()
+    }else if(form_id==="MKTrhFzL"){
+        question_maping =  quastionarySolarServiceForm_MKTrhFzL()
+    }else if(form_id==="ThDlcaCK"){
+        question_maping = quastionaryPaintingAndRoofForm_ThDlcaCK()
+    }
+    else if(form_id==="zT4ZOhYg"){
+        question_maping = quastionarySolarRoofingServiceForm_zT4ZOhYg()
+    }else if(form_id==="ScoUD2eg"){
+        question_maping=quastionarySolarPaintRoofingServiceForm_ScoUD2eg()
     }
     if(!question_maping) return null
 

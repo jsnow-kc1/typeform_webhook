@@ -50,6 +50,28 @@ export enum IRelationProperty {
 }
 
 
+export enum ILeaseChoice {
+    "own"='Own', 
+    "lease"='Lease', 
+    "not_sure"='Not Sure'
+}
+
+
+export enum IPowerConsumptionIncrease {
+    "do_not_expect_increase"='I do not expect and increase', 
+    "expect_increase"='I expect an increase', 
+    "expect_decrease"='I expect a decrease', 
+    "not_sure"='Not Sure'
+
+}
+
+export enum ISizeSolarSystemChoice {
+    "offset_as_possible"='Offset as much electricity cost as possible', 
+    "starter_system"='I want a starter system', 
+    "something_between"='I want something in between'
+}
+
+
 export enum ICertanityForChoice {
     "i_know_what_i_want" = "I know exactly what I want",
     "i_think_i_know_what_i_want" = "I think I know what I want",
