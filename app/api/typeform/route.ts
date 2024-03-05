@@ -11,8 +11,8 @@ export async function POST(request: NextRequest) {
 
         // ===== gettting associated inputs to updated =====
         const property_to_update = formPropertMaping({form_id:requestData.form_response.form_id,data:requestData.form_response.answers})
-        if(!property_to_update) return NextResponse.json({error:"nothing to update"})
-        if(Object.keys(property_to_update).length===0) return NextResponse.json({error:"nothing to update"})
+        if(!property_to_update) return new Response("Nothing to update.", { status: 400 })
+        if(Object.keys(property_to_update).length===0) return new Response("Nothing to update.", { status: 400 })
 
         await hubspotClient.crm.objects.basicApi.update(
             "deal",
@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
         )
         return NextResponse.json({success:true})
     } catch (error) {
-        return NextResponse.json({error:"something went wrong..."})
+        return new Response("Something went wrong.", { status: 400 })
     }
 }
 
