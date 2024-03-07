@@ -78,7 +78,8 @@ export const quastionaryForRoofing_bUXAVAKr = () => {
             replace: {
                 'Cash': { hubspot_valie_replace: IFundingChoices.cash },
                 'I have financing arranged': { hubspot_valie_replace: IFundingChoices.financed_arranged },
-                "I'd like help getting financing": { hubspot_valie_replace: IFundingChoices.help_getting_finance }
+                "I'd like help getting financing": { hubspot_valie_replace: IFundingChoices.help_getting_finance },
+                "Other": {hubspot_valie_replace:IFundingChoices.Other}
             }
         },
         "RelrlMlVXUwb": {
@@ -116,28 +117,28 @@ export const quastionaryForPaintingService_UsSzHcnl = () => {
             question: "What are your plans for the home?",
             hubsport_property_name: "future_plans_with_home",
             replace: {
-                'I plan to sell soon': {hubspot_valie_replace:IFuturePlanWithHome.plan_to_sell_soon},
-                'This is my forever home.': {hubspot_valie_replace:IFuturePlanWithHome["forever+home"]},
-                'I plan to pass this home on to family': {hubspot_valie_replace:IFuturePlanWithHome.plan_to_pass_this_home_on_to_family},
-                'I am not sure': {hubspot_valie_replace:IFuturePlanWithHome.not_sure}
+                'I plan to sell soon.': { hubspot_valie_replace: IFuturePlanWithHome.plan_to_sell_soon },
+                'This is my forever home.': { hubspot_valie_replace: IFuturePlanWithHome["forever+home"] },
+                'I plan to pass this home on to family.': { hubspot_valie_replace: IFuturePlanWithHome.plan_to_pass_this_home_on_to_family },
+                'I am not sure.': { hubspot_valie_replace: IFuturePlanWithHome.not_sure }
             }
         },
         "3wdppI4tm2Kg": {
             question: "Are you interested in energy-efficient upgrades?",
             hubsport_property_name: "interest_in_energy_efficient_upgrades",
-            replace:{
-                "Yes":{hubspot_valie_replace:IInterestInEnrgyEfficient.yes},
-                "No":{hubspot_valie_replace:IInterestInEnrgyEfficient.no},
-                "Possibly Interested":{hubspot_valie_replace:IInterestInEnrgyEfficient.possibly_interested}
+            replace: {
+                'Yes': { hubspot_valie_replace: IInterestInEnrgyEfficient.yes },
+                'No': { hubspot_valie_replace: IInterestInEnrgyEfficient.no },
+                'Possibly Interested': { hubspot_valie_replace: IInterestInEnrgyEfficient.possibly_interested }
             }
         },
         "TZnVJvTgSLvv": {
             question: "How will you fund this project?",
             hubsport_property_name: "desired_funding___financing__cloned_",
             replace: {
-                'Cash': {hubspot_valie_replace:IFundingChoices.cash},
-                'I have financing arranged': {hubspot_valie_replace:IFundingChoices.financed_arranged},
-                "I'd like to get help getting financing": {hubspot_valie_replace:IFundingChoices.help_getting_finance},
+                'Cash': { hubspot_valie_replace: IFundingChoices.cash },
+                'I have financing arranged': { hubspot_valie_replace: IFundingChoices.financed_arranged },
+                "I'd like help getting financing": { hubspot_valie_replace: IFundingChoices.help_getting_finance },
                 "Other": {hubspot_valie_replace:IFundingChoices.Other}
             }
         },
@@ -178,11 +179,11 @@ export const quastionarySolarServiceForm_Mch6ZqYb = ()=>{
         "4cuN82S4W58r":{
             question:"Do you have a timeframe for these projects?",
             hubsport_property_name:"desired_timeframe",
-            replace:{
-                'I have a hard due date.':{hubspot_valie_replace:IDesireTimeFrame.hard_due_date},
-                'I have a goal but am flexible.':{hubspot_valie_replace:IDesireTimeFrame.goal_but_flexible},
-                'I do not have a time frame yet.':{hubspot_valie_replace:IDesireTimeFrame.not_have_timeframe_yet},
-                'I am not in a rush.':{hubspot_valie_replace:IDesireTimeFrame.not_in_rush},
+            replace: {
+                'I have a hard due date.': { hubspot_valie_replace: IDesireTimeFrame.hard_due_date },
+                'I have a goal but am flexible.': { hubspot_valie_replace: IDesireTimeFrame.goal_but_flexible },
+                'I do not have a time frame yet.': { hubspot_valie_replace: IDesireTimeFrame.not_have_timeframe_yet },
+                'I am not in a rush.': { hubspot_valie_replace: IDesireTimeFrame.not_in_rush },
             }
         },
         "XvNSfdXAGrzP":{
@@ -224,11 +225,11 @@ export const quastionarySolarServiceForm_Mch6ZqYb = ()=>{
         "9Td5MpVlBvHL":{
             question:"How will you fund this project?",
             hubsport_property_name:"desired_funding___financing__cloned_",
-            replace:{
-                'Cash':{hubspot_valie_replace:IFundingChoices.cash}, 
-                'I have financing arranged':{hubspot_valie_replace:IFundingChoices.financed_arranged}, 
-                "I'd like to get help getting financing":{hubspot_valie_replace:IFundingChoices.help_getting_finance}, 
-                'Other':{hubspot_valie_replace:IFundingChoices.Other}
+            replace: {
+                'Cash': { hubspot_valie_replace: IFundingChoices.cash },
+                'I have financing arranged': { hubspot_valie_replace: IFundingChoices.financed_arranged },
+                "I'd like help getting financing": { hubspot_valie_replace: IFundingChoices.help_getting_finance },
+                "Other": {hubspot_valie_replace:IFundingChoices.Other}
             }
         },
         "1hgbq4KYN6GH":{
@@ -249,22 +250,22 @@ export const quastionarySolarServiceForm_MKTrhFzL = ()=>{
         "Xp2rznAfflH4":{
             question:"Which of these best describe you?",
             hubsport_property_name:"relation_to_property",
-            replace:{
-                'Homeowner':{hubspot_valie_replace:IRelationProperty.homeowner}, 
-                'Property Manager':{hubspot_valie_replace:IRelationProperty.property_manager}, 
-                'Realtor':{hubspot_valie_replace:IRelationProperty.realtor}, 
-                'General Contractor':{hubspot_valie_replace:IRelationProperty.general_contractor}, 
-                'Other':{hubspot_valie_replace:IRelationProperty.other}
+            replace: {
+                "Homeowner": { hubspot_valie_replace: IRelationProperty.homeowner },
+                "Property Manager": { hubspot_valie_replace: IRelationProperty.property_manager },
+                "Realtor": { hubspot_valie_replace: IRelationProperty.realtor },
+                "General Contractor": { hubspot_valie_replace: IRelationProperty.general_contractor },
+                "Other": { hubspot_valie_replace: IRelationProperty.other },
             }
         },
         "6OORa9jQyQeF":{
             question:"Do you have a timeframe for these projects?",
             hubsport_property_name:"desired_timeframe",
-            replace:{
-                'I have a hard due date.':{hubspot_valie_replace:IDesireTimeFrame.hard_due_date}, 
-                'I have a goal but am flexible.':{hubspot_valie_replace:IDesireTimeFrame.goal_but_flexible}, 
-                'I do not have a time frame yet.':{hubspot_valie_replace:IDesireTimeFrame.not_have_timeframe_yet}, 
-                'I am not in a rush.':{hubspot_valie_replace:IDesireTimeFrame.not_in_rush},
+            replace: {
+                'I have a hard due date.': { hubspot_valie_replace: IDesireTimeFrame.hard_due_date },
+                'I have a goal but am flexible.': { hubspot_valie_replace: IDesireTimeFrame.goal_but_flexible },
+                'I do not have a time frame yet.': { hubspot_valie_replace: IDesireTimeFrame.not_have_timeframe_yet },
+                'I am not in a rush.': { hubspot_valie_replace: IDesireTimeFrame.not_in_rush },
             }
         },
         "HyhVQls5nD24":{
@@ -274,30 +275,30 @@ export const quastionarySolarServiceForm_MKTrhFzL = ()=>{
         "K5Ak5BL14g6U":{
             question:"How certain are you about the choices you want for your house?",
             hubsport_property_name:"certainty_for_choices",
-            replace:{
-                'I know exactly what I want.':{hubspot_valie_replace:ICertanityForChoice.i_know_what_i_want}, 
-                'I think I know what I want.':{hubspot_valie_replace:ICertanityForChoice.i_think_i_know_what_i_want}, 
-                'I need some advice!':{hubspot_valie_replace:ICertanityForChoice.i_need_some_advice}
+            replace: {
+                "I know exactly what I want.": { hubspot_valie_replace: ICertanityForChoice.i_know_what_i_want },
+                "I think I know what I want.": { hubspot_valie_replace: ICertanityForChoice.i_think_i_know_what_i_want },
+                "I need some advice!": { hubspot_valie_replace: ICertanityForChoice.i_need_some_advice }
             }
         },
         "XcHq9Ltkqb85":{
             question:"What are your plans for the home?",
             hubsport_property_name:"future_plans_with_home",
-            replace:{
-                'I plan to sell soon.':{hubspot_valie_replace:IFuturePlanWithHome.plan_to_sell_soon}, 
-                'This is my forever home.':{hubspot_valie_replace:IFuturePlanWithHome["forever+home"]}, 
-                'I plan to pass this home on to family.':{hubspot_valie_replace:IFuturePlanWithHome.plan_to_pass_this_home_on_to_family}, 
-                'I am not sure.':{hubspot_valie_replace:IFuturePlanWithHome.not_sure}
-
+            replace: {
+                'I plan to sell soon.': { hubspot_valie_replace: IFuturePlanWithHome.plan_to_sell_soon },
+                'This is my forever home.': { hubspot_valie_replace: IFuturePlanWithHome["forever+home"] },
+                'I plan to pass this home on to family.': { hubspot_valie_replace: IFuturePlanWithHome.plan_to_pass_this_home_on_to_family },
+                'I am not sure.': { hubspot_valie_replace: IFuturePlanWithHome.not_sure }
+            
             }
         },
         "PaQhBjujzpD3":{
             question:"Are you interested in energy-efficient upgrades?",
             hubsport_property_name:"interest_in_energy_efficient_upgrades",
-            replace:{
-                'Yes':{hubspot_valie_replace:IInterestInEnrgyEfficient.yes}, 
-                'No':{hubspot_valie_replace:IInterestInEnrgyEfficient.no}, 
-                'Possibly Interested':{hubspot_valie_replace:IInterestInEnrgyEfficient.possibly_interested}
+            replace: {
+                'Yes': { hubspot_valie_replace: IInterestInEnrgyEfficient.yes },
+                'No': { hubspot_valie_replace: IInterestInEnrgyEfficient.no },
+                'Possibly Interested': { hubspot_valie_replace: IInterestInEnrgyEfficient.possibly_interested }
             }
         },
         "UXdT8jPzQw9V":{
@@ -331,22 +332,21 @@ export const quastionarySolarServiceForm_MKTrhFzL = ()=>{
         "CufgcIAHcX1J":{
             question:"How will you fund this project?",
             hubsport_property_name:"desired_funding___financing__cloned_",
-            replace:{
-                'Cash':{hubspot_valie_replace:IFundingChoices.cash}, 
-                'I have financing arranged':{hubspot_valie_replace:IFundingChoices.financed_arranged}, 
-                "I'd like to get help getting financing":{hubspot_valie_replace:IFundingChoices.help_getting_finance}, 
-                'Other':{hubspot_valie_replace:IFundingChoices.Other}
+            replace: {
+                'Cash': { hubspot_valie_replace: IFundingChoices.cash },
+                'I have financing arranged': { hubspot_valie_replace: IFundingChoices.financed_arranged },
+                "I'd like help getting financing": { hubspot_valie_replace: IFundingChoices.help_getting_finance },
+                "Other": {hubspot_valie_replace:IFundingChoices.Other}
             }
         },
         "53UfBDwI8817":{
             question:"When was the last paint job on your home?",
             hubsport_property_name:"last_time_home_was_painted",
             replace:{
-                'Less than 5 Years':{hubspot_valie_replace:ILastJobChoice.less_then_5_years}, 
-                '5-10 Years':{hubspot_valie_replace:ILastJobChoice["5_to_10_years"]}, 
-                '10+ years':{hubspot_valie_replace:ILastJobChoice["10_plus_years"]}, 
-                'I do not remember / am unsure':{hubspot_valie_replace:ILastJobChoice.i_do_not_remember}
-
+                "Less than 5 Years":{hubspot_valie_replace:ILastJobChoice.less_then_5_years},
+                "5-10 Years":{hubspot_valie_replace:ILastJobChoice["5_to_10_years"]},
+                "10+ years":{hubspot_valie_replace:ILastJobChoice["10_plus_years"]},
+                "I do not remember / am unsure":{hubspot_valie_replace:ILastJobChoice.i_do_not_remember}
             }
         },
         "h9jCBHAR52fu":{
@@ -377,23 +377,22 @@ export const quastionaryPaintingAndRoofForm_ThDlcaCK = ()=>{
         "DsBLwltBASIe":{
             question:"Which of these best describe you?",
             hubsport_property_name:"relation_to_property",
-            replace:{
-                'Homeowner':{hubspot_valie_replace:IRelationProperty.homeowner}, 
-                'Property Manager':{hubspot_valie_replace:IRelationProperty.property_manager}, 
-                'Realtor':{hubspot_valie_replace:IRelationProperty.realtor}, 
-                'General Contractor':{hubspot_valie_replace:IRelationProperty.general_contractor}, 
-                'Other':{hubspot_valie_replace:IRelationProperty.other}
+            replace: {
+                "Homeowner": { hubspot_valie_replace: IRelationProperty.homeowner },
+                "Property Manager": { hubspot_valie_replace: IRelationProperty.property_manager },
+                "Realtor": { hubspot_valie_replace: IRelationProperty.realtor },
+                "General Contractor": { hubspot_valie_replace: IRelationProperty.general_contractor },
+                "Other": { hubspot_valie_replace: IRelationProperty.other },
             }
         },
         "r81mdf7xF5RN":{
             question:"Do you have a timeframe for these projects?",
             hubsport_property_name:"desired_timeframe",
-            replace:{
-                'I have a hard due date.':{hubspot_valie_replace:IDesireTimeFrame.hard_due_date}, 
-                'I have a goal but am flexible.':{hubspot_valie_replace:IDesireTimeFrame.goal_but_flexible}, 
-                'I do not have a time frame yet.':{hubspot_valie_replace:IDesireTimeFrame.not_have_timeframe_yet}, 
-                'I am not in a rush.':{hubspot_valie_replace:IDesireTimeFrame.not_in_rush},
-
+            replace: {
+                'I have a hard due date.': { hubspot_valie_replace: IDesireTimeFrame.hard_due_date },
+                'I have a goal but am flexible.': { hubspot_valie_replace: IDesireTimeFrame.goal_but_flexible },
+                'I do not have a time frame yet.': { hubspot_valie_replace: IDesireTimeFrame.not_have_timeframe_yet },
+                'I am not in a rush.': { hubspot_valie_replace: IDesireTimeFrame.not_in_rush },
             }
         },
         "7fl57IQTlOGJ":{
@@ -403,10 +402,10 @@ export const quastionaryPaintingAndRoofForm_ThDlcaCK = ()=>{
         "lVSw0hoBHogd":{
             question:"How certain are you about the choices you want for your house?",
             hubsport_property_name:"certainty_for_choices",
-            replace:{
-                'I know exactly what I want.':{hubspot_valie_replace:ICertanityForChoice.i_know_what_i_want}, 
-                'I think I know what I want.':{hubspot_valie_replace:ICertanityForChoice.i_think_i_know_what_i_want}, 
-                'I need some advice!':{hubspot_valie_replace:ICertanityForChoice.i_need_some_advice}
+            replace: {
+                "I know exactly what I want.": { hubspot_valie_replace: ICertanityForChoice.i_know_what_i_want}, 
+                "I think I know what I want.": { hubspot_valie_replace: ICertanityForChoice.i_think_i_know_what_i_want}, 
+                "I need some advice!": { hubspot_valie_replace: ICertanityForChoice.i_need_some_advice}
             }
         },
         "CEACHcmBX467":{
@@ -426,41 +425,41 @@ export const quastionaryPaintingAndRoofForm_ThDlcaCK = ()=>{
         "kY6tc2sDmNaR":{
             hubsport_property_name:"future_plans_with_home",
             question:"What are your plans for the home?",
-            replace:{
-                'I plan to sell soon.':{hubspot_valie_replace:IFuturePlanWithHome.plan_to_sell_soon}, 
-                'This is my forever home.':{hubspot_valie_replace:IFuturePlanWithHome["forever+home"]}, 
-                'I plan to pass this home on to family.':{hubspot_valie_replace:IFuturePlanWithHome.plan_to_pass_this_home_on_to_family}, 
-                'I am not sure.':{hubspot_valie_replace:IFuturePlanWithHome.not_sure}
-
+            replace: {
+                'I plan to sell soon.': { hubspot_valie_replace: IFuturePlanWithHome.plan_to_sell_soon },
+                'This is my forever home.': { hubspot_valie_replace: IFuturePlanWithHome["forever+home"] },
+                'I plan to pass this home on to family.': { hubspot_valie_replace: IFuturePlanWithHome.plan_to_pass_this_home_on_to_family },
+                'I am not sure.': { hubspot_valie_replace: IFuturePlanWithHome.not_sure }
+            
             }
         },
         "Fo70blw5LDz5":{
             hubsport_property_name:"interest_in_energy_efficient_upgrades",
             question:"Are you interested in energy-efficient upgrades?",
-            replace:{
-                'Yes':{hubspot_valie_replace:IInterestInEnrgyEfficient.yes}, 
-                'No':{hubspot_valie_replace:IInterestInEnrgyEfficient.no}, 
-                'Possibly Interested':{hubspot_valie_replace:IInterestInEnrgyEfficient.possibly_interested}
+            replace: {
+                'Yes': { hubspot_valie_replace: IInterestInEnrgyEfficient.yes },
+                'No': { hubspot_valie_replace: IInterestInEnrgyEfficient.no },
+                'Possibly Interested': { hubspot_valie_replace: IInterestInEnrgyEfficient.possibly_interested }
             }
         },
         "VnCb9bFRlglT":{
             question:"How will you fund this project?",
             hubsport_property_name:"desired_funding___financing__cloned_",
-            replace:{
-                'Cash':{hubspot_valie_replace:IFundingChoices.cash}, 
-                'I have financing arranged':{hubspot_valie_replace:IFundingChoices.financed_arranged}, 
-                "I'd like to get help getting financing":{hubspot_valie_replace:IFundingChoices.help_getting_finance}, 
-                'Other':{hubspot_valie_replace:IFundingChoices.Other}
+            replace: {
+                'Cash': { hubspot_valie_replace: IFundingChoices.cash },
+                'I have financing arranged': { hubspot_valie_replace: IFundingChoices.financed_arranged },
+                "I'd like help getting financing": { hubspot_valie_replace: IFundingChoices.help_getting_finance },
+                "Other": {hubspot_valie_replace:IFundingChoices.Other}
             }
         },
         'C0czrgPFGSa8':{
             question:"When was the last paint job on your home?",
             hubsport_property_name:"last_time_home_was_painted",
             replace:{
-                'Less than 5 Years':{hubspot_valie_replace:ILastJobChoice.less_then_5_years}, 
-                '5-10 Years':{hubspot_valie_replace:ILastJobChoice["5_to_10_years"]}, 
-                '10+ years':{hubspot_valie_replace:ILastJobChoice["10_plus_years"]}, 
-                'I do not remember / am unsure':{hubspot_valie_replace:ILastJobChoice.i_do_not_remember}
+                "Less than 5 Years":{hubspot_valie_replace:ILastJobChoice.less_then_5_years},
+                "5-10 Years":{hubspot_valie_replace:ILastJobChoice["5_to_10_years"]},
+                "10+ years":{hubspot_valie_replace:ILastJobChoice["10_plus_years"]},
+                "I do not remember / am unsure":{hubspot_valie_replace:ILastJobChoice.i_do_not_remember}
             }
         },
         "DPQfTI8wsudq":{
@@ -492,22 +491,22 @@ export const quastionarySolarRoofingServiceForm_zT4ZOhYg = ()=>{
         "PpnAj1hFZNk3":{
             question:"Which of these best describe you?",
             hubsport_property_name:"relation_to_property",
-            replace:{
-                'Homeowner':{hubspot_valie_replace:IRelationProperty.homeowner}, 
-                'Property Manager':{hubspot_valie_replace:IRelationProperty.property_manager}, 
-                'Realtor':{hubspot_valie_replace:IRelationProperty.realtor}, 
-                'General Contractor':{hubspot_valie_replace:IRelationProperty.general_contractor}, 
-                'Other':{hubspot_valie_replace:IRelationProperty.other}
+            replace: {
+                "Homeowner": { hubspot_valie_replace: IRelationProperty.homeowner },
+                "Property Manager": { hubspot_valie_replace: IRelationProperty.property_manager },
+                "Realtor": { hubspot_valie_replace: IRelationProperty.realtor },
+                "General Contractor": { hubspot_valie_replace: IRelationProperty.general_contractor },
+                "Other": { hubspot_valie_replace: IRelationProperty.other },
             }
         },
         "0Aa90Pa3gYhK":{
             question:"Do you have a timeframe for these projects?",
             hubsport_property_name:"desired_timeframe",
-            replace:{
-                'I have a hard due date.':{hubspot_valie_replace:IDesireTimeFrame.hard_due_date}, 
-                'I have a goal but am flexible.':{hubspot_valie_replace:IDesireTimeFrame.goal_but_flexible}, 
-                'I do not have a time frame yet.':{hubspot_valie_replace:IDesireTimeFrame.not_have_timeframe_yet}, 
-                'I am not in a rush.':{hubspot_valie_replace:IDesireTimeFrame.not_in_rush},
+            replace: {
+                'I have a hard due date.': { hubspot_valie_replace: IDesireTimeFrame.hard_due_date },
+                'I have a goal but am flexible.': { hubspot_valie_replace: IDesireTimeFrame.goal_but_flexible },
+                'I do not have a time frame yet.': { hubspot_valie_replace: IDesireTimeFrame.not_have_timeframe_yet },
+                'I am not in a rush.': { hubspot_valie_replace: IDesireTimeFrame.not_in_rush },
             }
         },
         "rzPGKKQvfoM4":{
@@ -517,10 +516,10 @@ export const quastionarySolarRoofingServiceForm_zT4ZOhYg = ()=>{
         "KuRgPoUYrVoq":{
             question:"How certain are you about the choices you want for your house?",
             hubsport_property_name:"certainty_for_choices",
-            replace:{
-                'I know exactly what I want.':{hubspot_valie_replace:ICertanityForChoice.i_know_what_i_want}, 
-                'I think I know what I want.':{hubspot_valie_replace:ICertanityForChoice.i_think_i_know_what_i_want}, 
-                'I need some advice!':{hubspot_valie_replace:ICertanityForChoice.i_need_some_advice}
+            replace: {
+                "I know exactly what I want.": { hubspot_valie_replace: ICertanityForChoice.i_know_what_i_want },
+                "I think I know what I want.": { hubspot_valie_replace: ICertanityForChoice.i_think_i_know_what_i_want },
+                "I need some advice!": { hubspot_valie_replace: ICertanityForChoice.i_need_some_advice }
             }
         },
         "3chtmcxUqNce":{
@@ -540,20 +539,20 @@ export const quastionarySolarRoofingServiceForm_zT4ZOhYg = ()=>{
         "J6rr7fgSa4NZ":{
             question:"What are your plans for the home?",
             hubsport_property_name:"future_plans_with_home",
-            replace:{
-                'I plan to sell soon.':{hubspot_valie_replace:IFuturePlanWithHome.plan_to_sell_soon}, 
-                'This is my forever home.':{hubspot_valie_replace:IFuturePlanWithHome["forever+home"]}, 
-                'I plan to pass this home on to family.':{hubspot_valie_replace:IFuturePlanWithHome.plan_to_pass_this_home_on_to_family}, 
-                'I am not sure.':{hubspot_valie_replace:IFuturePlanWithHome.not_sure}
+            replace: {
+                'I plan to sell soon.': { hubspot_valie_replace: IFuturePlanWithHome.plan_to_sell_soon },
+                'This is my forever home.': { hubspot_valie_replace: IFuturePlanWithHome["forever+home"] },
+                'I plan to pass this home on to family.': { hubspot_valie_replace: IFuturePlanWithHome.plan_to_pass_this_home_on_to_family },
+                'I am not sure.': { hubspot_valie_replace: IFuturePlanWithHome.not_sure }
             }
         },
         "x996rXsqI6Kc":{
             question:"Are you interested in energy-efficient upgrades?",
             hubsport_property_name:"interest_in_energy_efficient_upgrades",
-            replace:{
-                'Yes':{hubspot_valie_replace:IInterestInEnrgyEfficient.yes}, 
-                'No':{hubspot_valie_replace:IInterestInEnrgyEfficient.no}, 
-                'Possibly Interested':{hubspot_valie_replace:IInterestInEnrgyEfficient.possibly_interested}
+            replace: {
+                'Yes': { hubspot_valie_replace: IInterestInEnrgyEfficient.yes },
+                'No': { hubspot_valie_replace: IInterestInEnrgyEfficient.no },
+                'Possibly Interested': { hubspot_valie_replace: IInterestInEnrgyEfficient.possibly_interested }
             }
         },
         "Ki9QCowQZ9Ja":{
@@ -587,11 +586,11 @@ export const quastionarySolarRoofingServiceForm_zT4ZOhYg = ()=>{
         "DGEfvkyEvm4E":{
             question:"How will you fund this project?",
             hubsport_property_name:"desired_funding___financing__cloned_",
-            replace:{
-                'Cash':{hubspot_valie_replace:IFundingChoices.cash}, 
-                'I have financing arranged':{hubspot_valie_replace:IFundingChoices.financed_arranged}, 
-                "I'd like to get help getting financing":{hubspot_valie_replace:IFundingChoices.help_getting_finance}, 
-                'Other':{hubspot_valie_replace:IFundingChoices.Other}
+            replace: {
+                'Cash': { hubspot_valie_replace: IFundingChoices.cash },
+                'I have financing arranged': { hubspot_valie_replace: IFundingChoices.financed_arranged },
+                "I'd like help getting financing": { hubspot_valie_replace: IFundingChoices.help_getting_finance },
+                "Other": {hubspot_valie_replace:IFundingChoices.Other}
             }
         },
         "mSgtNqvUHKpI":{
@@ -611,22 +610,22 @@ export const quastionarySolarPaintRoofingServiceForm_ScoUD2eg = ()=>{
         "Nr3cBPGZ3Ylj":{
             question:"Which of these best describe you?",
             hubsport_property_name:"relation_to_property",
-            replace:{
-                'Homeowner':{hubspot_valie_replace:IRelationProperty.homeowner}, 
-                'Property Manager':{hubspot_valie_replace:IRelationProperty.property_manager}, 
-                'Realtor':{hubspot_valie_replace:IRelationProperty.realtor}, 
-                'General Contractor':{hubspot_valie_replace:IRelationProperty.general_contractor}, 
-                'Other':{hubspot_valie_replace:IRelationProperty.other}
+            replace: {
+                "Homeowner": { hubspot_valie_replace: IRelationProperty.homeowner },
+                "Property Manager": { hubspot_valie_replace: IRelationProperty.property_manager },
+                "Realtor": { hubspot_valie_replace: IRelationProperty.realtor },
+                "General Contractor": { hubspot_valie_replace: IRelationProperty.general_contractor },
+                "Other": { hubspot_valie_replace: IRelationProperty.other },
             }
         },
         "F6QVH8an5Eyc":{
             question:"Do you have a timeframe for these projects?",
             hubsport_property_name:"desired_timeframe",
-            replace:{
-                'I have a hard due date.':{hubspot_valie_replace:IDesireTimeFrame.hard_due_date}, 
-                'I have a goal but am flexible.':{hubspot_valie_replace:IDesireTimeFrame.goal_but_flexible}, 
-                'I do not have a time frame yet.':{hubspot_valie_replace:IDesireTimeFrame.not_have_timeframe_yet}, 
-                'I am not in a rush.':{hubspot_valie_replace:IDesireTimeFrame.not_in_rush},
+            replace: {
+                'I have a hard due date.': { hubspot_valie_replace: IDesireTimeFrame.hard_due_date },
+                'I have a goal but am flexible.': { hubspot_valie_replace: IDesireTimeFrame.goal_but_flexible },
+                'I do not have a time frame yet.': { hubspot_valie_replace: IDesireTimeFrame.not_have_timeframe_yet },
+                'I am not in a rush.': { hubspot_valie_replace: IDesireTimeFrame.not_in_rush },
             }
         },
         "YRLc8BeBt8cN":{
@@ -636,10 +635,10 @@ export const quastionarySolarPaintRoofingServiceForm_ScoUD2eg = ()=>{
         "L2dLvIwfI31q":{
             question:"How certain are you about the choices you want for your house?",
             hubsport_property_name:"certainty_for_choices",
-            replace:{
-                'I know exactly what I want.':{hubspot_valie_replace:ICertanityForChoice.i_know_what_i_want}, 
-                'I think I know what I want.':{hubspot_valie_replace:ICertanityForChoice.i_think_i_know_what_i_want}, 
-                'I need some advice!':{hubspot_valie_replace:ICertanityForChoice.i_need_some_advice}
+            replace: {
+                "I know exactly what I want.": { hubspot_valie_replace: ICertanityForChoice.i_know_what_i_want },
+                "I think I know what I want.": { hubspot_valie_replace: ICertanityForChoice.i_think_i_know_what_i_want },
+                "I need some advice!": { hubspot_valie_replace: ICertanityForChoice.i_need_some_advice }
             }
         },
         "2gakYt4ZOUmy":{
@@ -659,20 +658,20 @@ export const quastionarySolarPaintRoofingServiceForm_ScoUD2eg = ()=>{
         "Yci47w8xy52N":{
             question:"What are your plans for the home?",
             hubsport_property_name:"future_plans_with_home",
-            replace:{
-                'I plan to sell soon.':{hubspot_valie_replace:IFuturePlanWithHome.plan_to_sell_soon}, 
-                'This is my forever home.':{hubspot_valie_replace:IFuturePlanWithHome["forever+home"]}, 
-                'I plan to pass this home on to family.':{hubspot_valie_replace:IFuturePlanWithHome.plan_to_pass_this_home_on_to_family}, 
-                'I am not sure.':{hubspot_valie_replace:IFuturePlanWithHome.not_sure}
+            replace: {
+                'I plan to sell soon.': { hubspot_valie_replace: IFuturePlanWithHome.plan_to_sell_soon },
+                'This is my forever home.': { hubspot_valie_replace: IFuturePlanWithHome["forever+home"] },
+                'I plan to pass this home on to family.': { hubspot_valie_replace: IFuturePlanWithHome.plan_to_pass_this_home_on_to_family },
+                'I am not sure.': { hubspot_valie_replace: IFuturePlanWithHome.not_sure }
             }
         },
         "3eDixJQbgSSw":{
             question:"Are you interested in energy-efficient upgrades?",
             hubsport_property_name:"interest_in_energy_efficient_upgrades",
-            replace:{
-                'Yes':{hubspot_valie_replace:IInterestInEnrgyEfficient.yes}, 
-                'No':{hubspot_valie_replace:IInterestInEnrgyEfficient.no}, 
-                'Possibly Interested':{hubspot_valie_replace:IInterestInEnrgyEfficient.possibly_interested}
+            replace: {
+                'Yes': { hubspot_valie_replace: IInterestInEnrgyEfficient.yes },
+                'No': { hubspot_valie_replace: IInterestInEnrgyEfficient.no },
+                'Possibly Interested': { hubspot_valie_replace: IInterestInEnrgyEfficient.possibly_interested }
             }
         },
         "b9Y4uAxcFY0m":{
@@ -706,21 +705,21 @@ export const quastionarySolarPaintRoofingServiceForm_ScoUD2eg = ()=>{
         "Eu3iKHGm2ApG":{
             question:"How will you fund this project?",
             hubsport_property_name:"desired_funding___financing__cloned_",
-            replace:{
-                'Cash':{hubspot_valie_replace:IFundingChoices.cash}, 
-                'I have financing arranged':{hubspot_valie_replace:IFundingChoices.financed_arranged}, 
-                "I'd like to get help getting financing":{hubspot_valie_replace:IFundingChoices.help_getting_finance}, 
-                'Other':{hubspot_valie_replace:IFundingChoices.Other}
+            replace: {
+                'Cash': { hubspot_valie_replace: IFundingChoices.cash },
+                'I have financing arranged': { hubspot_valie_replace: IFundingChoices.financed_arranged },
+                "I'd like help getting financing": { hubspot_valie_replace: IFundingChoices.help_getting_finance },
+                "Other": {hubspot_valie_replace:IFundingChoices.Other}
             }
         },
         "qm6E1Ew5VSCI":{
             question:"When was the last paint job on your home?",
             hubsport_property_name:"last_time_home_was_painted",
             replace:{
-                'Less than 5 Years':{hubspot_valie_replace:ILastJobChoice.less_then_5_years}, 
-                '5-10 Years':{hubspot_valie_replace:ILastJobChoice["5_to_10_years"]}, 
-                '10+ years':{hubspot_valie_replace:ILastJobChoice["10_plus_years"]}, 
-                'I do not remember / am unsure':{hubspot_valie_replace:ILastJobChoice.i_do_not_remember}
+                "Less than 5 Years":{hubspot_valie_replace:ILastJobChoice.less_then_5_years},
+                "5-10 Years":{hubspot_valie_replace:ILastJobChoice["5_to_10_years"]},
+                "10+ years":{hubspot_valie_replace:ILastJobChoice["10_plus_years"]},
+                "I do not remember / am unsure":{hubspot_valie_replace:ILastJobChoice.i_do_not_remember}
             }
         },
         "J3ms1XuFRgzD":{

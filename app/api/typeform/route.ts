@@ -14,13 +14,20 @@ export async function POST(request: NextRequest) {
         if(!property_to_update) return new Response("Nothing to update.", { status: 400 })
         if(Object.keys(property_to_update).length===0) return new Response("Nothing to update.", { status: 400 })
 
-        await hubspotClient.crm.objects.basicApi.update(
-            "deal",
-            requestData.form_response.hidden.deal_id,
-            {properties:property_to_update}
-        )
+        try{
+            await hubspotClient.crm.objects.basicApi.update(
+                "deal",
+                requestData.form_response.hidden.deal_id,
+                {properties:property_to_update}
+            )
+        }catch(e:any){
+            const eror_detail = e?.body || {}
+            return new Response(JSON.stringify({error_detail:"hubspot update failed",payload:property_to_update,...eror_detail}), { status: 400 })
+        }
+
         return NextResponse.json({success:true,data_updated:property_to_update})
     } catch (error) {
+        console.log(error)
         return new Response("Something went wrong.", { status: 400 })
     }
 }

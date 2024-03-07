@@ -79,7 +79,7 @@ export enum ICertanityForChoice {
 }
 
 
-export enum IDesiredRoofingSurface {
+export enum IDesiredRoofingSurface { // not approve
     "replacement" = "Replacement",
     "repair_if_feasible_but_replacement_if_not" = "Repair, if feasible - Replacement if not",
     "repair_is_my_preference" = "Repair is my preference",
@@ -103,9 +103,9 @@ export enum IInterestInEnrgyEfficient {
 
 export enum IFundingChoices {
     "cash"="Cash",
-    "financed_arranged"="I have financing arranged",
-    "help_getting_finance"="I'd like to get help getting financing",
-    "Other"="Other" // need to confirm hubspot value
+    "financed_arranged"="I have financing",
+    "help_getting_finance"="I’d like help getting financing",
+    "Other"="Other"
 }
 
 
