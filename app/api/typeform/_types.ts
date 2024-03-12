@@ -125,6 +125,20 @@ export enum IColorScheme {
 }
 
 
+export enum IDealStageChoice {
+    "appointment"=6838853,
+    "inspection_performed"=105591194,
+    "estimating"=6838854,
+    "quote_given"=6838855,
+    "job_sold"=6838856,
+    "need_work_order"=6838860,
+    "execution"=6838861,
+    "mobilization"=6838858,
+    "wip"=161310780,
+    "closed_out"=105591193
+}
+
+
 export interface IFormQuestionMapingReplace {
     [key: string]: {
         hubspot_valie_replace?: string
