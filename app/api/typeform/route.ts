@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import {ITypeFormType} from './_types'
+import {IDealStageChoice, ITypeFormType} from './_types'
 import {formPropertMaping} from './_maping'
 import * as hubspot from "@hubspot/api-client"
 export const revalidate = 0; 
@@ -10,9 +10,10 @@ export async function POST(request: NextRequest) {
         const hubspotClient = new hubspot.Client({ accessToken: process.env.HUBSPOT_TOKEN as string })
 
         // ===== gettting associated inputs to updated =====
-        const property_to_update = formPropertMaping({form_id:requestData.form_response.form_id,data:requestData.form_response.answers})
+        let property_to_update = formPropertMaping({form_id:requestData.form_response.form_id,data:requestData.form_response.answers})
         if(!property_to_update) return new Response("Nothing to update.", { status: 400 })
         if(Object.keys(property_to_update).length===0) return new Response("Nothing to update.", { status: 400 })
+        property_to_update={...property_to_update,go_for_estimating:true,dealstage:IDealStageChoice.estimating}
 
         try{
             await hubspotClient.crm.objects.basicApi.update(
