@@ -19,7 +19,12 @@ export async function POST(request: NextRequest) {
             await hubspotClient.crm.objects.basicApi.update(
                 "deal",
                 requestData.form_response.hidden.deal_id,
-                {properties:property_to_update}
+                {
+                    properties:{
+                        ...property_to_update,
+                        typeform_complete:true
+                    }
+                }
             )
         }catch(e:any){
             const eror_detail = e?.body || {}
