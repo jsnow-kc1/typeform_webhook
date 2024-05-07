@@ -10,7 +10,7 @@ export interface ITypeFormType {
             deal_id: string
         }
         answers: {
-            type: "choice" | "date" | "number" | "boolean" | "text",
+            type: "choice" | "date" | "number" | "boolean" | "text" | "phone_number" | "email",
 
             // depending on type one of the following will exist
             choice: {
@@ -22,8 +22,8 @@ export interface ITypeFormType {
             number: number,
             boolean: boolean,
             text: string,
-
-
+            phone_number:string,
+            email:string,
             field: {
                 id: string,
                 type: "multiple_choice" | "date" | "yes_no" | "long_text",

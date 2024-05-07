@@ -3,7 +3,7 @@ import {quastionaryForPaintingService_UsSzHcnl, quastionaryForRoofing_bUXAVAKr, 
 
 
 
-const mapChoices=({answer,maping}:{answer:ITypeFormType['form_response']['answers'][0]['choice'],maping?:IFormQuestionMapingReplace})=>{
+export const mapChoices=({answer,maping}:{answer:ITypeFormType['form_response']['answers'][0]['choice'],maping?:IFormQuestionMapingReplace})=>{
     if(!maping) return answer.label
     if(!maping[answer.label]) return answer.label
     if(!maping[answer.label].hubspot_valie_replace) return answer.label
