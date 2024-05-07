@@ -45,6 +45,41 @@ export const isLandAdjusterMaping = () => {
     }
     return values
 }
+export const isZephrAdjusteraping = ()=>{
+    const values: { [key: string]: { id: string | null } } = {
+        "King, Ashley":{
+            id:"5185151"
+        },
+        "Novelo, Pastor":{
+            id:"3253351"
+        },
+        "Moss, Trevor":{
+            id:"6204451"
+        },
+        "Soyanco, Jahdiel":{
+            id:"2358251"
+        },
+        "Bain, Richard":{
+            id:"447218"
+        },
+        "Stewart, Todd":{
+            id:"4705401"
+        },
+        "Cravalho, Michael":{
+            id:"8124801"
+        },
+        "Ilustre, Ramon":{
+            id:"6603201"
+        },
+        "Jiskra, Jacob":{
+            id:"446370"
+        },
+        "Other":{
+            id:null
+        }
+    }
+    return values
+}
 
 
 export const questionForInspectionIsland_N2mr1fjE = () => {

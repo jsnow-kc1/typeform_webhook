@@ -1,6 +1,6 @@
 import { IFormQuestionMaping, ITypeFormType, } from "../typeform/_types";
 import { mapChoices } from "../typeform/_maping";
-import { isLandAdjusterMaping, questionForInspectionIsland_N2mr1fjE, questionForInpsecectionZephyr_QI6IgxgG, InspectionRequiredDataType } from "./_utils";
+import { isLandAdjusterMaping, questionForInspectionIsland_N2mr1fjE, questionForInpsecectionZephyr_QI6IgxgG, InspectionRequiredDataType, isZephrAdjusteraping } from "./_utils";
 
 
 
@@ -24,7 +24,7 @@ export const inspectionFormQuestionMaping = ({ data, form_id }: { form_id: strin
 
     if (form_id === "QI6IgxgG") { // Zephyr - Insurance Adjuster Form
         question_maping = questionForInpsecectionZephyr_QI6IgxgG()
-        answer_required = isZephrGetRequiredData()
+        answer_required = isZephrGetRequiredData({answers_by_id: answers_by_id})
         inssurence_type = "zephyr"
     }
     if (form_id === "N2mr1fjE") { // Island - 
@@ -37,7 +37,7 @@ export const inspectionFormQuestionMaping = ({ data, form_id }: { form_id: strin
 
 
 
-export const isZephrGetRequiredData = () => {
+export const isZephrGetRequiredData = ({ answers_by_id }: { answers_by_id: { [key: string]: ITypeFormType['form_response']['answers'][0] } }) => {
     let answer_required: InspectionRequiredDataType = {
         is_same_contact: false,
         owner_first_name: "",
@@ -45,8 +45,45 @@ export const isZephrGetRequiredData = () => {
         company_id: null,
         adjuster_contact_id: null
     }
+
+
+    const is_same_contact = answers_by_id['DtwiV6DcrTXY'].boolean
+    const selected_adjuster_option = answers_by_id['dspjS0WFhzRn'].choice.label
+    const adjuster_values = isZephrAdjusteraping()
+    const adjuster_contact_id = adjuster_values[selected_adjuster_option]?.id || null
+    let adjuster_contact_detail:InspectionRequiredDataType['new_adjuster_contact_detail'] | null = null
+    if(!adjuster_contact_id){
+        const email = answers_by_id['yOJ9xe9W0M6O'].email
+        const firstName = answers_by_id['jdJ5HuwckRQK'].text
+        const lastName = answers_by_id['2w2uONtHvUqh'].text
+        const phone = answers_by_id["GBUEKF0Hh2dv"].phone_number
+        adjuster_contact_detail = {
+            email:email,
+            firstName:firstName,
+            lastName:lastName,
+            phone:phone
+        }
+    }
+    if(!adjuster_contact_detail && !adjuster_contact_id) throw new Error("Nor adjuster contact detail or contact id is given.")
+
+    // ===== Getting first and last name =====
+    let owner_first_name = ""
+    let owner_last_name = ""
+    if (!is_same_contact) {
+        owner_first_name = answers_by_id['AtXSpAcoqch3'].text
+        owner_last_name = answers_by_id['UFImGtJgXGAR'].text        
+    } else {
+        owner_first_name = answers_by_id['Ijo8ZqCf3yJQ'].text
+        owner_last_name = answers_by_id['NXIweDhtjMWM'].text
+    }
+
     return {
         ...answer_required,
+        is_same_contact: is_same_contact,
+        owner_first_name: owner_first_name,
+        owner_last_name: owner_first_name,
+        adjuster_contact_id: adjuster_contact_id,
+        new_adjuster_contact_detail:adjuster_contact_detail || undefined,
         company_id: "7779580456",
     }
 }

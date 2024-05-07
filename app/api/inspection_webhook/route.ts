@@ -9,12 +9,14 @@ export const revalidate = 0;
 
 export async function POST(request: NextRequest) {
     try {
+        const isDevelopment = process.env.ENVIRONMENT === "development"
         const requestData: ITypeFormType = await request.json()
         const { inssurence_type, answer_required } = inspectionFormQuestionMaping({ form_id: requestData.form_response.form_id, data: requestData.form_response.answers })
 
         // ===== basic validation =====
         let dealname = answer_required.owner_first_name + " " + answer_required.owner_last_name
-        dealname = "testing deal - 123" // TODO - TEMPRARY
+        if (isDevelopment) { dealname = "testing deal - 123" }
+
         if (!inssurence_type) return new Response("Invalid insurence company.", { status: 400 })
         if (!(dealname.trim().length > 0)) return new Response("Invalid first and last name.", { status: 400 })
         if (!answer_required.company_id) return new Response("Invalid company id.", { status: 400 })
@@ -23,11 +25,13 @@ export async function POST(request: NextRequest) {
         // ===== getting adjuster contact id if not exist
         if (!adjuster_contact_id && answer_required.new_adjuster_contact_detail) {
             let form_contact_detail = answer_required.new_adjuster_contact_detail
-            form_contact_detail = { // TODO: TEMPRARY
-                email: "testing@gmail.com",
-                firstName: "testing",
-                lastName: "testing last",
-                phone: ""
+            if (isDevelopment) {
+                form_contact_detail = {
+                    email: "testing@gmail.com",
+                    firstName: "testing",
+                    lastName: "testing last",
+                    phone: ""
+                }
             }
             const { contact_id } = await getOrCreateContact({
                 email: form_contact_detail.email,
