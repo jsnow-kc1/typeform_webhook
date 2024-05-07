@@ -1,6 +1,7 @@
-import { AssociationSpecAssociationCategoryEnum, FilterOperatorEnum, PublicAssociationsForObject } from "@hubspot/api-client/lib/codegen/crm/companies"
+import { FilterOperatorEnum, PublicAssociationsForObject } from "@hubspot/api-client/lib/codegen/crm/companies"
 import { IFormQuestionMaping } from "../typeform/_types"
 import * as hubspot from "@hubspot/api-client"
+import axios from "axios"
 
 export interface InspectionRequiredDataType {
     is_same_contact: boolean,
@@ -19,7 +20,8 @@ export interface InspectionRequiredDataType {
         phone: string,
         firstName: string,
         lastName: string,
-    }
+    },
+    attachment: string | null
 }
 
 export const isLandAdjusterMaping = () => {
@@ -45,37 +47,37 @@ export const isLandAdjusterMaping = () => {
     }
     return values
 }
-export const isZephrAdjusteraping = ()=>{
+export const isZephrAdjusteraping = () => {
     const values: { [key: string]: { id: string | null } } = {
-        "King, Ashley":{
-            id:"5185151"
+        "King, Ashley": {
+            id: "5185151"
         },
-        "Novelo, Pastor":{
-            id:"3253351"
+        "Novelo, Pastor": {
+            id: "3253351"
         },
-        "Moss, Trevor":{
-            id:"6204451"
+        "Moss, Trevor": {
+            id: "6204451"
         },
-        "Soyanco, Jahdiel":{
-            id:"2358251"
+        "Soyanco, Jahdiel": {
+            id: "2358251"
         },
-        "Bain, Richard":{
-            id:"447218"
+        "Bain, Richard": {
+            id: "447218"
         },
-        "Stewart, Todd":{
-            id:"4705401"
+        "Stewart, Todd": {
+            id: "4705401"
         },
-        "Cravalho, Michael":{
-            id:"8124801"
+        "Cravalho, Michael": {
+            id: "8124801"
         },
-        "Ilustre, Ramon":{
-            id:"6603201"
+        "Ilustre, Ramon": {
+            id: "6603201"
         },
-        "Jiskra, Jacob":{
-            id:"446370"
+        "Jiskra, Jacob": {
+            id: "446370"
         },
-        "Other":{
-            id:null
+        "Other": {
+            id: null
         }
     }
     return values
@@ -275,4 +277,89 @@ export const dealToCompanyAssociate = async ({ company_id, deal_id }: { company_
     })
     if ((association_response.data as any).numErrors && (association_response.data as any).numErrors > 0) throw new Error("Failed to associate company with deal.")
     return association_response
+}
+export const contactToDealAssociate = async ({ contact_id, deal_id, type }: { contact_id: string, deal_id: string, type: string }) => {
+    const hubspotClient = new hubspot.Client({ accessToken: process.env.HUBSPOT_TOKEN as string })
+    const association_response = await hubspotClient.crm.associations.batchApi.createWithHttpInfo("0-1", "0-3", {
+        inputs: [
+            {
+                _from: {
+                    id: contact_id
+                },
+                to: {
+                    id: deal_id
+                },
+                type: type
+            }
+        ]
+    })
+    if ((association_response.data as any).numErrors && (association_response.data as any).numErrors > 0) throw new Error("Failed to associate contact to deal.")
+    return association_response
+}
+
+export const uploadFile = async ({ url }: { url: string }) => {
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${process.env.HUBSPOT_TOKEN}`,
+        }
+    }
+    const attachment_url = url
+    const parts = attachment_url.split('.');
+    const extension = parts[parts.length - 1];
+    const name = "assignment_sheet" + "." + extension
+    const file = await axios.post("https://api.hubapi.com/files/v3/files/import-from-url/async", {
+        "access": "PUBLIC_INDEXABLE",
+        "name": name,
+        "duplicateValidationStrategy": "NONE",
+        "overwrite": false,
+        "url": attachment_url,
+        "folderId": "157533015194"
+    }, config);
+    let file_id: string | null = null
+    const file_uploaded_data = file.data
+    while (true) {
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for 2 seconds
+        const url = `https://api.hubapi.com/files/v3/files/import-from-url/async/tasks/${file_uploaded_data.id}/status`;
+        try {
+            const response = await axios.get(url, config);
+            const response_json = response.data;
+            if (response_json.status === "COMPLETE") {
+                file_id = response_json.result.id;
+                break;
+            }
+        } catch (error) {
+            console.error("Error occurred:", error);
+            break;
+        }
+    }
+    if (!file_id) throw new Error("FAiled to upload attachment.")
+    return file_id
+}
+
+export const attachFileToDeal = async ({ file_id, deal_id }: { file_id: string, deal_id: string }) => {
+    // ===== creating the note =====
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${process.env.HUBSPOT_TOKEN}`,
+        }
+    }
+    const currentTimeUTCString = new Date().toISOString();
+    await axios.post("https://api.hubapi.com/crm/v3/objects/notes", {
+        "properties": {
+            "hs_timestamp": currentTimeUTCString,
+            "hs_note_body": "Attachment Sheet from typeform insurence form.",
+            "hs_attachment_ids": file_id
+        },
+        "associations": [{
+            "to": {
+                "id": deal_id
+            },
+            "types": [
+                {
+                    "associationCategory": "HUBSPOT_DEFINED",
+                    "associationTypeId": 214
+                }
+            ]
+        }]
+    }, config)
 }

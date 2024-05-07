@@ -28,7 +28,8 @@ export interface ITypeFormType {
                 id: string,
                 type: "multiple_choice" | "date" | "yes_no" | "long_text",
                 ref: string
-            }
+            },
+            file_url:string
         }[]
     }
 }

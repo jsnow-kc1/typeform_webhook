@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import { ITypeFormType } from "../typeform/_types";
 import { inspectionFormQuestionMaping } from "./_question_maping";
-import * as hubspot from "@hubspot/api-client"
 import { AssociationSpecAssociationCategoryEnum } from "@hubspot/api-client/lib/codegen/crm/deals";
-import { FilterOperatorEnum } from "@hubspot/api-client/lib/codegen/crm/contacts";
-import { getOrCreateContact, createDeal, dealToCompanyAssociate } from "./_utils";
+import { getOrCreateContact, createDeal, dealToCompanyAssociate, contactToDealAssociate, uploadFile, attachFileToDeal } from "./_utils";
 export const revalidate = 0;
 
 export async function POST(request: NextRequest) {
@@ -21,6 +19,13 @@ export async function POST(request: NextRequest) {
         if (!(dealname.trim().length > 0)) return new Response("Invalid first and last name.", { status: 400 })
         if (!answer_required.company_id) return new Response("Invalid company id.", { status: 400 })
         let adjuster_contact_id = answer_required.adjuster_contact_id
+
+
+        // ===== uploading attachment =====
+        let attachment_file_id: null | string = null
+        if (answer_required.attachment) {
+            attachment_file_id = await uploadFile({ url: answer_required.attachment })
+        }
 
         // ===== getting adjuster contact id if not exist
         if (!adjuster_contact_id && answer_required.new_adjuster_contact_detail) {
@@ -62,6 +67,10 @@ export async function POST(request: NextRequest) {
         const resedential_deal_create_response = await createDeal({ properties: resedential_roofing_deal })
         const resedential_roofing_deal_id = resedential_deal_create_response.data.id
         await dealToCompanyAssociate({ company_id: answer_required.company_id, deal_id: resedential_roofing_deal_id, })
+        await contactToDealAssociate({ contact_id: adjuster_contact_id, deal_id: resedential_roofing_deal_id, type: "adjuster" })
+        if (attachment_file_id) {
+            await attachFileToDeal({ file_id: attachment_file_id, deal_id: resedential_roofing_deal_id })
+        }
 
         // ========== Creating the deal (insurance deal). ===========
         const insurence_deal_create_response = await createDeal({
@@ -77,6 +86,10 @@ export async function POST(request: NextRequest) {
         })
         const insurence_deal_id = insurence_deal_create_response.data.id
         await dealToCompanyAssociate({ company_id: answer_required.company_id, deal_id: insurence_deal_id })
+        await contactToDealAssociate({ contact_id: adjuster_contact_id, deal_id: insurence_deal_id, type: "adjuster" })
+        if (attachment_file_id) {
+            await attachFileToDeal({ file_id: attachment_file_id, deal_id: insurence_deal_id })
+        }
 
         return NextResponse.json({ success: true })
     } catch (error) {
