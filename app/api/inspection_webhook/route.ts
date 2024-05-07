@@ -48,6 +48,58 @@ export async function POST(request: NextRequest) {
         }
         if (!adjuster_contact_id) throw new Error("Adjuster contact not found.")
 
+        // ===== Getting main point of contact id if exist and required =====
+        let main_point_of_contact_id = null
+        if (answer_required.main_point_of_contact) {
+            let form_contact_detail = answer_required.main_point_of_contact
+            if (isDevelopment) {
+                form_contact_detail = {
+                    email: "testing_main_point@gmail.com",
+                    firstName: "testing main point",
+                    lastName: "testing last",
+                    phone: ""
+                }
+            }
+            const { contact_id } = await getOrCreateContact({
+                email: form_contact_detail.email,
+                firstName: form_contact_detail.firstName,
+                lastName: form_contact_detail.lastName,
+                phone: form_contact_detail.phone
+            })
+            main_point_of_contact_id = contact_id
+        }
+
+
+        // ===== Getting owner contact if exist and required =====
+        let owner_contact_id = null
+        if (answer_required.owner_contact_detail) {
+            let form_contact_detail = answer_required.owner_contact_detail
+            if (isDevelopment) {
+                form_contact_detail = {
+                    email: "testing_owner@gmail.com",
+                    firstName: "testing owner",
+                    lastName: "testing last",
+                    phone: ""
+                }
+            }
+            const { contact_id } = await getOrCreateContact({
+                email: form_contact_detail.email,
+                firstName: form_contact_detail.firstName,
+                lastName: form_contact_detail.lastName,
+                phone: form_contact_detail.phone
+            })
+            owner_contact_id = contact_id
+        }
+
+        // ===== contacts ids' =====
+        const contact_ids = [{id:adjuster_contact_id,type:"adjuster"}]
+        if(main_point_of_contact_id){
+            contact_ids.push({id:main_point_of_contact_id,type:"main_point_of_contact"})
+        }
+        if(owner_contact_id){
+            contact_ids.push({id:owner_contact_id,type:"owner___trustee_"})
+        }
+
         // ===== Creating deal object. =====
         let insurance_deal: any = {
             pipeline: "1973319",
@@ -67,7 +119,7 @@ export async function POST(request: NextRequest) {
         const resedential_deal_create_response = await createDeal({ properties: resedential_roofing_deal })
         const resedential_roofing_deal_id = resedential_deal_create_response.data.id
         await dealToCompanyAssociate({ company_id: answer_required.company_id, deal_id: resedential_roofing_deal_id, })
-        await contactToDealAssociate({ contact_id: adjuster_contact_id, deal_id: resedential_roofing_deal_id, type: "adjuster" })
+        await contactToDealAssociate({ contact_ids: contact_ids, deal_id: resedential_roofing_deal_id })
         if (attachment_file_id) {
             await attachFileToDeal({ file_id: attachment_file_id, deal_id: resedential_roofing_deal_id })
         }
@@ -86,7 +138,7 @@ export async function POST(request: NextRequest) {
         })
         const insurence_deal_id = insurence_deal_create_response.data.id
         await dealToCompanyAssociate({ company_id: answer_required.company_id, deal_id: insurence_deal_id })
-        await contactToDealAssociate({ contact_id: adjuster_contact_id, deal_id: insurence_deal_id, type: "adjuster" })
+        await contactToDealAssociate({ contact_ids: contact_ids, deal_id: insurence_deal_id })
         if (attachment_file_id) {
             await attachFileToDeal({ file_id: attachment_file_id, deal_id: insurence_deal_id })
         }

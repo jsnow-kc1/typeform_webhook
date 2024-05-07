@@ -2,6 +2,7 @@ import { FilterOperatorEnum, PublicAssociationsForObject } from "@hubspot/api-cl
 import { IFormQuestionMaping } from "../typeform/_types"
 import * as hubspot from "@hubspot/api-client"
 import axios from "axios"
+import { PublicAssociation } from "@hubspot/api-client/lib/codegen/crm/associations"
 
 export interface InspectionRequiredDataType {
     is_same_contact: boolean,
@@ -16,6 +17,12 @@ export interface InspectionRequiredDataType {
         lastName: string,
     },
     owner_contact_detail?: {
+        email: string,
+        phone: string,
+        firstName: string,
+        lastName: string,
+    },
+    main_point_of_contact?: {
         email: string,
         phone: string,
         firstName: string,
@@ -278,20 +285,22 @@ export const dealToCompanyAssociate = async ({ company_id, deal_id }: { company_
     if ((association_response.data as any).numErrors && (association_response.data as any).numErrors > 0) throw new Error("Failed to associate company with deal.")
     return association_response
 }
-export const contactToDealAssociate = async ({ contact_id, deal_id, type }: { contact_id: string, deal_id: string, type: string }) => {
+export const contactToDealAssociate = async ({ contact_ids, deal_id }: { contact_ids: { id: string, type: string }[], deal_id: string }) => {
     const hubspotClient = new hubspot.Client({ accessToken: process.env.HUBSPOT_TOKEN as string })
+    const inputs: PublicAssociation[] = []
+    contact_ids.map((contact) => {
+        inputs.push({
+            _from: {
+                id: contact.id
+            },
+            to: {
+                id: deal_id
+            },
+            type: contact.type
+        })
+    })
     const association_response = await hubspotClient.crm.associations.batchApi.createWithHttpInfo("0-1", "0-3", {
-        inputs: [
-            {
-                _from: {
-                    id: contact_id
-                },
-                to: {
-                    id: deal_id
-                },
-                type: type
-            }
-        ]
+        inputs: inputs
     })
     if ((association_response.data as any).numErrors && (association_response.data as any).numErrors > 0) throw new Error("Failed to associate contact to deal.")
     return association_response
