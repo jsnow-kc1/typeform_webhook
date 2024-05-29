@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
         let property_to_update = formPropertMaping({form_id:requestData.form_response.form_id,data:requestData.form_response.answers})
         if(!property_to_update) return new Response("Nothing to update.", { status: 400 })
         if(Object.keys(property_to_update).length===0) return new Response("Nothing to update.", { status: 400 })
-        property_to_update={...property_to_update,go_for_estimating:true,dealstage:IDealStageChoice.estimating}
+        property_to_update={...property_to_update,dealstage:IDealStageChoice.estimating}
 
         try{
             await hubspotClient.crm.objects.basicApi.update(
