@@ -15,20 +15,21 @@ export async function POST(request: NextRequest) {
             data: requestData.form_response.answers,
         });
 
-        if (!property_to_update) return new Response("Nothing to update.", { status: 400 });
-        if (Object.keys(property_to_update).length === 0) return new Response("Nothing to update.", { status: 400 });
+        console.log('Mapped Properties:', property_to_update);  // Debugging log
 
-        // === Fix: Prevent updating dealstage to 'estimating' for specific stages ===
+        // Remove incorrect 'dealstage' if it exists
         const stagesNotAllowedToDowngrade = [
-            6838855, 6838856, 6838860, 6838861,
-            6838858, 161310780, 105591193, 
-            163911020, 6838859
-        ].map(String);  // Convert to strings to avoid comparison issues
+            "6838855", "6838856", "6838860", "6838861",
+            "6838858", "161310780", "105591193",
+            "163911020", "6838859"
+        ];
 
-        const currentDealStage = property_to_update.dealstage || "";  // Safeguard against missing dealstage
+        const currentDealStage = property_to_update.dealstage || "";
 
         if (!stagesNotAllowedToDowngrade.includes(currentDealStage)) {
             property_to_update = { ...property_to_update, dealstage: IDealStageChoice.estimating };
+        } else {
+            delete property_to_update.dealstage;  // Ensure no downgrade occurs
         }
 
         try {
@@ -60,8 +61,6 @@ export async function POST(request: NextRequest) {
         return new Response("Something went wrong.", { status: 400 });
     }
 }
-
-
 
 export async function GET(request: NextRequest) {
     try {
