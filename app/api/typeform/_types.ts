@@ -126,6 +126,7 @@ export enum IColorScheme {
 
 
 export enum IDealStageChoice {
+    "needs_inspection_residential_deals_Pipeline"=173202291,
     "appointment"=6838853,
     "inspection_performed"=105591194,
     "estimating"=6838854,

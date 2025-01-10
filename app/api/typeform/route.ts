@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import {IDealStageChoice, ITypeFormType} from './_types'
 import {formPropertMaping} from './_maping'
 import * as hubspot from "@hubspot/api-client"
+import { get_updated_deal_stage } from "./_get_stage";
 export const revalidate = 0; 
 
 export async function POST(request: NextRequest) {
@@ -15,24 +16,14 @@ export async function POST(request: NextRequest) {
             data: requestData.form_response.answers,
         });
 
-        console.log('Mapped Properties:', property_to_update);  // Debugging log
-
-        // Remove incorrect 'dealstage' if it exists
-        const stagesNotAllowedToDowngrade = [
-            "6838855", "6838856", "6838860", "6838861",
-            "6838858", "161310780", "105591193",
-            "163911020", "6838859"
-        ];
-
-        const currentDealStage = property_to_update.dealstage || "";
-
-        if (!stagesNotAllowedToDowngrade.includes(currentDealStage)) {
-            property_to_update = { ...property_to_update, dealstage: IDealStageChoice.estimating };
-        } else {
-            delete property_to_update.dealstage;  // Ensure no downgrade occurs
-        }
+        if(property_to_update.dealstage)
+            delete property_to_update.dealstage
 
         try {
+            const deal_detail = await hubspotClient.crm.objects.basicApi.getById("deal",requestData.form_response.hidden.deal_id)
+            const updatedDealStage = get_updated_deal_stage({
+                currentDealStage:Number(deal_detail.properties.dealstage)
+            })
             await hubspotClient.crm.objects.basicApi.update(
                 "deal",
                 requestData.form_response.hidden.deal_id,
@@ -40,6 +31,7 @@ export async function POST(request: NextRequest) {
                     properties: {
                         ...property_to_update,
                         typeform_complete: true,
+                        dealstage: updatedDealStage
                     },
                 }
             );
