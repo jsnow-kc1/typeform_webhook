@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import {IDealStageChoice, ITypeFormType} from './_types'
 import {formPropertMaping} from './_maping'
 import * as hubspot from "@hubspot/api-client"
+import { get_updated_deal_stage } from "./_get_stage";
 export const revalidate = 0; 
 
 export async function POST(request: NextRequest) {
@@ -14,15 +15,21 @@ export async function POST(request: NextRequest) {
         if(!property_to_update) return new Response("Nothing to update.", { status: 400 })
         if(Object.keys(property_to_update).length===0) return new Response("Nothing to update.", { status: 400 })
         property_to_update={...property_to_update,dealstage:IDealStageChoice.estimating}
-
+        
+        // ===== getting hubspot properties =====
         try{
+            const deal_detail = await hubspotClient.crm.objects.basicApi.getById("deal",requestData.form_response.hidden.deal_id)
+            const updatedDealStage = get_updated_deal_stage({
+                currentDealStage:Number(deal_detail.properties.dealstage)
+            })
             await hubspotClient.crm.objects.basicApi.update(
                 "deal",
                 requestData.form_response.hidden.deal_id,
                 {
                     properties:{
                         ...property_to_update,
-                        typeform_complete:true
+                        typeform_complete:true,
+                        dealstage:updatedDealStage || undefined
                     }
                 }
             )
